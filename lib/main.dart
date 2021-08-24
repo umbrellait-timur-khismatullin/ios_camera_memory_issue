@@ -60,6 +60,10 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pop(context),
+        child: Icon(Icons.arrow_back),
+      ),
       body: FutureBuilder<bool>(
         future: completer.future,
         builder: (context, snapshot) {
