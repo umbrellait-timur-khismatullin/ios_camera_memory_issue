@@ -11,7 +11,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  camera: ^0.9.0
+  camera:
+    git:
+      url: https://github.com/umbrellait-mikhail-plotnikov/plugins.git
+      ref: fix-unexpected-memory-usage-on-iOS
+      path: packages/camera/camera
 
 dev_dependencies:
   flutter_test:
