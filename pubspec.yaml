@@ -16,6 +16,7 @@ dependencies:
       url: https://github.com/umbrellait-mikhail-plotnikov/plugins.git
       ref: fix-unexpected-memory-usage-on-iOS
       path: packages/camera/camera
+  gallery_saver: ^2.1.3
 
 dev_dependencies:
   flutter_test:

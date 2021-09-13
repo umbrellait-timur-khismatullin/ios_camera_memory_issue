@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:camera/camera.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 
 void main() {
   runApp(MyApp());
@@ -61,8 +62,9 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pop(context),
-        child: Icon(Icons.arrow_back),
+        onPressed: () async => takePicture(),
+        child: Icon(Icons.camera),
+        backgroundColor: Colors.redAccent,
       ),
       body: FutureBuilder<bool>(
         future: completer.future,
@@ -81,5 +83,12 @@ class _CameraScreenState extends State<CameraScreen> {
     controller = CameraController(cameras[0], ResolutionPreset.max);
     await controller!.initialize();
     completer.complete(true);
+  }
+
+  Future<void> takePicture() async{
+    XFile? xFile = await controller?.takePicture();
+    if(xFile != null){
+      await GallerySaver.saveImage(xFile.path);
+    }
   }
 }
